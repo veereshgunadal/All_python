@@ -1,0 +1,98 @@
+Packages
+
+Package.Module.Atrribute
+
+1. Package is Folder contains modules(.py files)
+2. Package contains __init__.py(init file)
+
+3. Ways to import package - __init__.py is not there or if its there also nothing inside
+
+   1. import package_name.module_name
+
+      1. is equal to import module_name
+      2. Access attributes by using package_name.module_name.attribute_name
+
+   2. from package_name import module
+
+      1. is equal to import module_name
+      2. Access attributes by using module_name.attribute_name
+
+   3. from package_name.module_name import variable, method, class
+      
+      1. is equal to from module_name import variable, method, class
+      2. Access attributes by using direct attribute_name
+
+   import package_name                                          - package_name.module_name.attribute_name - gives Error
+   import package_name.module_name                              - package_name.module_name.attribute_name - works fine
+   from package_name import module                              - module_name.attribute_name              - works fine
+   from package_name.module_name import variable, method, class - attribute_name                          - works fine
+
+4. Ways to import package - __init__.py is there,but no __all__ variable.
+
+   1. init file contains variable name A                 - works fine
+      1. program file contains
+         import package_name
+         pacakge_name.A
+
+   2. init file contains import module_name              - gives error for init file
+      1. program file contains
+         import package_name
+         pacakge_name.module_name.attribute_name
+
+   3. init file contains import pacakge_name.module_name - works fine
+      1. program file contains
+         import package_name
+         pacakge_name.module_name.attribute_name
+   
+   4. init file contains import pacakge_name.module_name - gives error package has not module_name1
+      1. program file contains
+         from package_name import *
+         module_name1.attribute_name
+
+5. Ways to import package - init file contains __all__ variable
+
+   3. __all__ = ["module_name"]
+
+      1. program file contains       - works fine
+         from package_name import *
+         module_name.attribute_name
+      
+      2. program file contains       - gives error(import all modules, then look __all__ variable. give access those module in __all__)
+         from package_name import *
+         module_name1.attribute_name
+
+6. import pacakge_name directly, __init__.py file comes to picture 
+   then modules should be import in init file
+   then access pacakge_name.module_name.attribute_name
+
+7. from package_name import * , __all__ variable come to picture
+   then modules should be mentioned in this variable
+   then access module_name.attribute_name
+
+8. from package_name import *
+   then look __all__ variable in init.py file and access those modules
+   if __all__ variable is not there
+   then cann't access any modules
+
+9. from module_name import *
+   then look __all__ variable in module_name.py and access those attributes
+   if __all__ variable is not there
+   then access all attributes except attribute name stat with underscore
+
+Important statements
+
+   import package_name                                          - package_name.module_name.attribute_name - gives Error
+   import package_name.module_name                              - package_name.module_name.attribute_name - works fine
+   from package_name import module                              - module_name.attribute_name              - works fine
+   from package_name.module_name import variable, method, class - attribute_name                          - works fine
+
+      __init__.py has content import package.module_name
+
+   import package_name                                          - package_name.module_name.attribute_name - works fine
+   from package_name import *                                   - module_name.attribute_name              - gives error
+
+      __init__.py has content __all__ = ["module_name"]
+
+   import package_name                                          - package_name.module_name.attribute_name - gives error
+   from package_name import *                                   - module_name.attribute_name              - works fine
+   from package_name import *                                   - module_name1.attribute_name             - gives error

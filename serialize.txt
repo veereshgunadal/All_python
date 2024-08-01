@@ -1,0 +1,31 @@
+serialize - means to string
+deserialize - means from string
+
+encoding = utf-8 in read and write
+
+j str  to python   - deserialize
+python to j str    - serialize
+
+python to json string - json.dumps()
+j str  to python      - json.loads()
+python to file object - json.dump()
+f obj  to python      - json load()
+
+json.dumps(obj)
+    object to json string
+
+simply searilize objects to text file
+json.dump(obj, f)
+    json formated object or stream to file like object text file 
+
+decoing object again, reading text file,  deserialize(load(), loads())
+
+x = json.load(f)
+    file object to python object
+
+json string to object
+x = json.loads()
+
+    strings to python object
+
+loads(dumps(x)) != x

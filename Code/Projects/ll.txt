@@ -1,0 +1,12 @@
+methods
+
+1.printll
+2.append
+3.pop - rewrite
+4.prepend
+5.popfirst - rewrite
+6.get
+7.setvalue
+8.insert
+8.revome
+9.reverse

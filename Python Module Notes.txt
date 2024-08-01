@@ -1,0 +1,27 @@
+Modules
+
+1. Module is a python file with .py extension.
+2. Any module file can contains one variable
+
+   __all__ = [can mention variable, methods and class names]
+
+3. Ways to use module
+
+   1. import module
+      1. Imports and access all attributes in the module
+      2. then access the module attributes by using module name    
+         - module_name.attributes_name
+      3. __all__ variable in module file doesn't affect here
+
+   2. from module import variable, method, class
+      1. Imports only specified attributes in import statement
+      2. then access the module attributes without using module name, use direct attibute names
+         - attributes_name
+      3. __all__ variable in module file doesn't affect here
+
+   3. from module import *
+      1. Access attributes specified in __all__ variable in module
+      2. Access all attributes(except attributes name start with _) if __all__ variable not present in the module
+      3. then access the module attributes without using module name, use direct attibute names
+         - attributes_name
+      3. __all__ variable does affect here

@@ -1,0 +1,62 @@
+Moduels
+
+1. import module1,module2       - imports everything
+2. from module1 import var,func - imports only named ones
+3. from module1 import *        - imports everything, __all__ variable is not there
+4. from module3 import *        - imports only named inside __all__ variable in module3, if __all__ variable is there - 17
+5. import module3               - imports all, if few named inside __all__ variable in module3, it doesnot affect
+
+Packages
+
+MyPackage1 - __init__, module1,module2,module3
+MyPackage2 
+
+__init__.py is not there or if its there also nothing inside, 6-10 points
+
+6. import MyPackage1           - It wont work, can't access any module and attributes of package. import used for module. (refer 10th point)
+7. import MyPackage1.module1   - It works  (call attribute MyPackage1.module1.attribute_name)
+
+8. from MyPackage1.module1 import var, func  -  imports only named ones (call directly attribute name)
+
+Note : calling any attribute use name after import word,
+       import package.module                 - package.module.attribute_name
+       import module                         - module.attribute_name
+       from module import attribute          - attribute_name
+       from package.module import attibute   - attribute_name
+
+9. from MyPackage1 import module1  - import module1 everything (call attribute module1.attribute)
+10 import MyPackage1               - Its correct (but call MyPackage1.module1 or MyPackage.module1.attribute_name gives error module1 not found)
+  
+__init__.py is there, content also there inside
+
+11. import MyPackage1              - Its correct (but __init__.py has globla variable A, can access using MyPackage1.A)
+12. import MyPackage1              - Its correct (__init__.py has import module1, but call attribute in module1 gives error module1 not found)
+13. import MyPackage1              - Its correct (__init__.py has import MyPackag1.module1, call attributes MyPackage1.module1.attribute_name no error)
+14. from MyPackage1 import *       - Its not import all modules in MyPackage1 (__init__.py has import MyPackag1.module1)
+15. from MyPackage1 import *       - Its import modules named inside __all__ list variable in __init__.py (call attribute module1.attribute_name)
+
+Notes:
+
+For a package, when __all__ is not defined, import * does not import anything.
+For a module, when __all__ is not defined, import * imports everything (except—you guessed it—names starting with an underscore).
+
+16. from module4 import *          - Its import attributes, named inside __all__ list variable in module4 (if __all__ variable is inside this the case)
+                                                                                    otherwise it will all attributes except name starts with _
+
+17. from MyPackage1.MyHalfPackage import *  - Its imports all attributes inside module4 no error
+
+            MyHalfPackage contains __init__.py file __all__ = ["module4"]
+                   module contains                  __all__ = ["var4", "func4"]
+    here, import moudles named inside __all__ variable inside __init__.py file from MyHalfPackage, its consider all of module4
+    
+    means from package import module
+          thats why it look for __all__ variable in package's __init__.py
+
+18. from MyPackage1.MyHalfPackage.module4 import *  - Its imports only var4, func4 attributes not others - error for others
+
+            MyHalfPackage contains __init__.py file __all__ = ["module4"]
+                   module contains                  __all__ = ["var4", "func4"]
+    here, import all from moudle4 of MyHalfPackage, its consider named attributes inside __all__ variable in module4
+
+    means from modules import *
+          thats why it look for __all__ variable in module.py                       

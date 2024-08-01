@@ -1,0 +1,75 @@
+path should in "\\" double backslash
+
+r - read existing file
+    if file is there
+       read
+    else 
+       error
+
+w - write file
+    if file exist
+       overwrite
+    else
+       create new file and write
+
+a - append in existing file
+    if file exist
+       append
+    else
+       create new file and write
+
+x - create new file and write
+    if file exist
+       error
+    else
+       create new file and write
+
+r+ - read and write, write means overrides
+     if file not exist -?
+w+ - write and read, write means overrides
+     if file not exist -?
+r+ - append and read, write means no overrides
+     if file not exist -?
+
+r+ - read and write,  read and writes depends on cursor
+     if file exist
+        if read before write
+           cursor at begining, read the content and cursor at end writes
+
+        if write before read
+           cursor at begining,
+           if writing content >= file content
+               overwirtes file content, now cursore at end, no content to read
+
+           else writing content < file content
+               overwites file content upto some index, cursor is at some index now reads the content
+     else file not exist
+        error
+
+w+ - write and read, write means overrides
+     cursor at begining
+     if file exist
+        read first or write first, overwriting file content
+     else file not exist
+        create new file
+
+a+ - append and read, write means no overrides
+     cursor at end
+     if file exist
+        read first or write first, appends
+     else file not exist
+        create new file        
+
+loads() - makes dict from file
+dumps() - makes str from dict
+
+
+                  | r   r+   w   w+   a   a+
+------------------|--------------------------
+read              | +   +        +        +
+write             |     +    +   +    +   +
+write after seek  |     +    +   +
+create            |          +   +    +   +
+truncate          |          +   +
+position at start | +   +    +   +
+position at end   |                   +   +

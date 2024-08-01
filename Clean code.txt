@@ -1,0 +1,31 @@
+What is clean code?
+1. readble and meaningful
+2. reduce cognitive load
+3. should be concise and to the point
+4. should avoid unintuitive names, complex nesting and big code blocks
+5. should follow best practice
+6. should be fun to write and maintain
+
+Write a Story, author of code
+
+Key pain points
+
+1. Names - variable, functions, classes
+2. Structure and comments - code formatting, Good and Bad Comments
+3. Functions - Length, Parameters
+4. Conditions and Error Handling - Deep nesting, Missing error handling
+5. Classes & data structures - Missing and Bloated classes(class do many things)
+
+   solutions
+   1. Rules and Concepts
+   2. Patterns and principles
+   3. Test-Driven Development
+
+Strongly types means mentioning the datat type for variables
+
+clean code                            pattern & principles
+1.write readable meaningfull code    1.write code which is maintainable and extensible
+
+clean code                            clean architecture(how structuing code,how store data)
+1. how to write the code             1. where to write which code
+2. Focus on single problems files    2. Focus on project as a whole

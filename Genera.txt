@@ -1,0 +1,52 @@
+Generators
+1. gives sequence
+2. without storing in memory
+
+Ex:
+
+def a:
+    yield "A"
+    yield "B"
+    yield "C"
+
+x = a()
+print(type(x))  # class generators
+print(next(x))  # A
+
+Its same as list but it wotn store data in memory.
+
+l = [x*x, for x in range(1000000000000000000000000)] - gives memory error
+
+l = (x*x, for x in range(1000000000000000000000000)) - tuple unpacked
+while True:
+    print(next(l))
+
+Ex:
+def first_num(num):
+    while n < num:
+        yield n
+        n = n+1
+l = first_num(10)
+print(l)
+for i in l:
+    print(i)
+
+Ex:
+
+def fib():
+    a,b = 0,1
+    while True:
+        yield a
+        a,b = b,a+b
+
+x = fib()
+for i in x:
+    print(i)
+
+
+
+Advantages
+1. Performance will be improved
+2. Memory utilization will be improved
+3. compare with normal iterators generators are easy	
+4. Generators best suitable for web scraping

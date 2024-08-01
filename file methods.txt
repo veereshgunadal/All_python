@@ -1,0 +1,40 @@
+1. f.read()
+   size - optional numeric argument
+   reads the file.
+   returns as string(for txt) or as bytes object(binary mode)
+
+2. f.readline()
+   reads the single line of file. may be read upto \n
+                                  and after reading upto \n, may be considers \n as line(not sure)
+
+   try both check output
+   put for line in f:
+       print(line)
+
+   put for line in f:
+       print(line , end='')
+
+3. f.readlines() and list(f)
+   reads and gives list of lines
+
+4. f.write("nniodms")
+   writes string to the file
+   other types of objects to be converted to string or binay mode to write in file
+
+5. f.tell()
+   returns an integer giving the file object’s current position in the 
+   file represented as number of bytes from the beginning of the file 
+   when in binary mode and an opaque number when in text mode
+
+6. f.seek(offset, whence)
+   
+   whence default is 0. whence is reference position
+                     0 - begining position
+                     1 - current position
+                     2 - end postion
+   
+   offset - numeric value
+
+   seek is computed by whence(reference postion) + offset
+   
+   but for text mode, seek is allowed for begining of the file always.
